@@ -19,7 +19,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        // Vérifier si l'utilisateur existe
+        // Vérification de l'utilisateur
 
         $administrateur = Administrateur::where('email', $request->email)->first();
 
@@ -35,7 +35,6 @@ class AuthController extends Controller
 
         return response()->json([
             'access_token' => $token,
-            'token_type'   => 'Bearer',
         ]);
     }
 
