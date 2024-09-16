@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use App\Models\Administrateur;
 use Illuminate\Support\Facades\Hash;
@@ -10,16 +9,12 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-
-    
-    public function login(LoginRequest $request)
+    public function login(Request $request)
     {
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required',
         ]);
-
-        // Vérification de l'utilisateur
 
         $administrateur = Administrateur::where('email', $request->email)->first();
 
@@ -29,16 +24,14 @@ class AuthController extends Controller
             ]);
         }
 
-        // Création du Token
-
         $token = $administrateur->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'access_token' => $token,
+            'token_type'   => 'Bearer',
+            'user'         => $administrateur,
         ]);
     }
-
-    // Déconnexion pour test
 
     public function logout(Request $request)
     {
