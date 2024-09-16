@@ -5,19 +5,22 @@ namespace App\Http\Controllers;
 use Log;
 use App\Models\Profil;
 use Illuminate\Http\Request;
+use App\Http\Resources\ProfilResource;
 use App\Http\Requests\StoreProfilRequest;
 
 class ProfileController extends Controller
 {
+
+    //Création de profil 
     public function store(StoreProfilRequest $request)
     {
         $user = $request->user();
 
+
         if (!$user) {
-            return response()->json(['message' => 'Not authenticated hedi'], 401);
+            return response()->json(['message' => 'Utilisateur non authentifié'], 401);
         }
     
-        return response()->json(['message' => 'Authenticated', 'user' => $user], 200);
     
         try {
 
@@ -45,5 +48,14 @@ class ProfileController extends Controller
             'error' => $e->getMessage(),
         ], 500);
     }
+    }
+
+    public function profils_actifs()
+    {
+        
+
+        $profils = Profil::where('statut', 'actif')->get();
+
+         return ProfilResource::collection($profils);
     }
 }

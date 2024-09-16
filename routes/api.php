@@ -20,14 +20,10 @@ use App\Http\Controllers\ProfileController;
 
 
 Route::post('/login', [AuthController::class, 'login']);
-Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
-Route::post('/profil', [ProfileController::class, 'store']);
-/*Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum')->group(function () {
     Route::post('/profil', [ProfileController::class, 'store']);
-});*/
-Route::middleware('auth:sanctum')->get('/check-login', function (Request $request) {
-    return response()->json([
-        'authenticated' => true,
-        'user' => $request->user(),
-    ], 200);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+Route::get('/profils/actifs', [ProfileController::class, 'profils_actifs'])
+    ->middleware('auth.optional:sanctum');
