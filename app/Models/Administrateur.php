@@ -11,6 +11,9 @@ class Administrateur extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'administrateurs'; 
+
+
     /**
      * The attributes that are mass assignable.
      *
