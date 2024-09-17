@@ -18,15 +18,19 @@ use App\Http\Controllers\ProfileController;
 
 
 
-
+//API de connéxion
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    //API creéation de profil
     Route::post('/profil', [ProfileController::class, 'store']);
+    //API de déconnexion
     Route::post('/logout', [AuthController::class, 'logout']);
+    //API de supression ou modification
     Route::put('/profil/{id}', [ProfileController::class, 'update']);
     Route::delete('/profil/{id}', [ProfileController::class, 'destroy']);
 });
 
+//API liste profils actifs
 Route::get('/profils/actifs', [ProfileController::class, 'profils_actifs'])
     ->middleware('auth.optional:sanctum');
