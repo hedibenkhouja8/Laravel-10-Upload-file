@@ -20,9 +20,12 @@ use App\Http\Controllers\ProfileController;
 
 
 Route::post('/login', [AuthController::class, 'login']);
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/profil', [ProfileController::class, 'store']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::put('/profil/{id}', [ProfileController::class, 'update']);
+    Route::delete('/profil/{id}', [ProfileController::class, 'destroy']);
 });
 
 Route::get('/profils/actifs', [ProfileController::class, 'profils_actifs'])
