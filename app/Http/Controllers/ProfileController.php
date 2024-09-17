@@ -7,6 +7,7 @@ use App\Models\Profil;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProfilResource;
 use App\Http\Requests\StoreProfilRequest;
+use App\Http\Requests\UpdateProfilRequest;
 
 class ProfileController extends Controller
 {
@@ -53,18 +54,13 @@ class ProfileController extends Controller
 
             // Mise à jour du profil
 
-    public function update(Request $request, $id)
+    public function update(UpdateProfilRequest $request, $id)
     {
         try {
           //  $data = $request->all();
           //  dd($request->all());
 
-            $validatedData = $request->validate([
-                'nom' => 'required|string|max:255',
-                'prenom' => 'required|string|max:255',
-                'statut' => 'required|in:inactif,en_attente,actif',
-                'image' => 'nullable|file|image|max:2048',
-            ]);
+          $validatedData = $request->validated();
     
             $profil = Profil::find($id);
     
@@ -88,19 +84,17 @@ class ProfileController extends Controller
         }
     }
     
+    //Supression d'un profil
     public function destroy($id)
     {
-        // Check if the authenticated user is available
       
 
-        // Find the profile by ID
         $profil = Profil::find($id);
 
         if (!$profil) {
             return response()->json(['message' => 'Profil n\'existe pas'], 404);
         }
 
-        // Delete the profile
         $profil->delete();
 
         return response()->json(['message' => 'profil supprimé'], 200);
