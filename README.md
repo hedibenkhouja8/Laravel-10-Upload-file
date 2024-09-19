@@ -11,11 +11,19 @@
 
 Liste des Endpoints:
 
-- api/login : Api d'authentification.
-- api/profils : API Liste des profils actis sans  ou avec statut 
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- api/login : ENDPOINT d'authentification.
+- api/logout : ENDPOINT de déconnexion.
+- api/profils/actifs : ENDPOINT Liste des profils actis sans  ou avec statut 
+- api/profil : ENDPOINT Création d'un profil 
+- api/profil/{id} : ENDPOINT de Suppression ou de Modification d'un profil
 
+  Rq: N'oubliez pas d'utiliser POST avec ?_method=PUT à la fin d'url quand vous tester la modification d'un profil avec Postman
+
+  Controllers : AuthController / ProfileController
+  Middleware : Authenticate / OptionalAuthenticate
+  Requests : LoginRequest / UpdateProfilRequest / StoreProfilRequest
+  Ressources : ProfilRessource
+  Models : Administrateur / Profil
+  Factories : ProfilFactory / AdministrateurFactory
+  Seeders : AdministrateurSeeder / ProfilSeeder
+  Tests : AuthControllerTest / ProfilControllerTest
