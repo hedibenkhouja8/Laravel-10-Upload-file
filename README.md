@@ -16,7 +16,7 @@ Liste des Endpoints:
 - api/profil : ENDPOINT Création d'un profil 
 - api/profil/{id} : ENDPOINT de Suppression ou de Modification d'un profil
 
-  Rq: N'oubliez pas d'utiliser POST avec ?_method=PUT à la fin d'url quand vous tester la modification d'un profil avec Postman
+  Remarque: N'oubliez pas d'utiliser POST avec ?_method=PUT à la fin d'url quand vous tester la modification d'un profil avec Postman
 
   Controllers : AuthController / ProfileController <br>
   Middleware : Authenticate / OptionalAuthenticate <br>
