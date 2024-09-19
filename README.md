@@ -19,11 +19,11 @@ Liste des Endpoints:
 
   Rq: N'oubliez pas d'utiliser POST avec ?_method=PUT à la fin d'url quand vous tester la modification d'un profil avec Postman
 
-  Controllers : AuthController / ProfileController
-  Middleware : Authenticate / OptionalAuthenticate
-  Requests : LoginRequest / UpdateProfilRequest / StoreProfilRequest
-  Ressources : ProfilRessource
-  Models : Administrateur / Profil
-  Factories : ProfilFactory / AdministrateurFactory
-  Seeders : AdministrateurSeeder / ProfilSeeder
+  Controllers : AuthController / ProfileController <br>
+  Middleware : Authenticate / OptionalAuthenticate <br>
+  Requests : LoginRequest / UpdateProfilRequest / StoreProfilRequest <br>
+  Ressources : ProfilRessource <br>
+  Models : Administrateur / Profil <br>
+  Factories : ProfilFactory / AdministrateurFactory <br>
+  Seeders : AdministrateurSeeder / ProfilSeeder <br>
   Tests : AuthControllerTest / ProfilControllerTest
