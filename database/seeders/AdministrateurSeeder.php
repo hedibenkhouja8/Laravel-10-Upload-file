@@ -18,7 +18,7 @@ class AdministrateurSeeder extends Seeder
             'nom'     => 'Admin',
             'prenom'  => 'Hedi',
             'email'    => 'hedibenkhouja@gmail.com',
-            'password' => Hash::make('123456789'), // Hash the password
+            'password' => Hash::make('123456789'), 
         ]);
     }
 }

@@ -36,7 +36,7 @@ class ProfileControllerTest extends TestCase
         // Checker la réponse
         $response->assertStatus(200)
                  ->assertJson(['message' => 'Profil mis à jour']);
-// Checker modification sur BDD
+        // Checker modification sur BDD
         $this->assertDatabaseHas('profils', [
             'id' => $profil->id,
             'nom' => 'Test',
@@ -45,6 +45,7 @@ class ProfileControllerTest extends TestCase
             'image' => 'images/' . $image->hashName(),
         ]);
     }
+
 
     public function test_create_profile()
 {
@@ -72,9 +73,9 @@ class ProfileControllerTest extends TestCase
                  'statut',
                  'image',
                  'created_at',
-                 'updated_at',//schema doit etre le meme que la réponse
+                 'updated_at',  //schema doit etre le meme que la réponse
              ]);
-// Checker création sur BDD
+            // Checker création sur BDD
 
     $this->assertDatabaseHas('profils', [
         'nom' => 'John',
